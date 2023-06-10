@@ -15,7 +15,7 @@ function AuthProvider({ children }) {
       localStorage.setItem('@food_explorer:user', JSON.stringify(user))
       localStorage.setItem('@food_explorer:token', token)
 
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       setData({ user, token })
     } catch (error) {
       if (error.response) {
@@ -38,7 +38,7 @@ function AuthProvider({ children }) {
     const user = localStorage.getItem('@food_explorer:user')
 
     if (token && user) {
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setData({
         token,
