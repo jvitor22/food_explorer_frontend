@@ -3,8 +3,18 @@ import { Input } from "../Input"
 import { Button } from "../Button"
 import { FiLogOut, FiSearch } from "react-icons/fi"
 import { IoReceiptOutline } from "react-icons/io5"
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useAuth } from "../../hooks/auth"
 
 export function HeaderUser() {
+  const { signOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
   return(
     <Container>
       <Brand to="/">
@@ -19,14 +29,16 @@ export function HeaderUser() {
         placeholder="Busque por pratos ou ingredientes"
       />
 
-      <div className="button">
+      <div>
         <Button 
           icon={IoReceiptOutline}
           title="Pedidos (0)"
         />
       </div>
 
-      <FiLogOut />
+      <button onClick={handleSignOut}>
+        <FiLogOut />
+      </button>
     </Container>
   )
 }

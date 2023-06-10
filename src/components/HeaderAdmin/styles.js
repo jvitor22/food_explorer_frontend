@@ -15,13 +15,13 @@ export const Container = styled.header`
   align-items: center;
   gap: 3.2rem;
 
-  > svg {
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    width: 3.2rem;
-    height: 3.2rem;
+  > button {
+    border: none;
+    background-color: transparent;
 
-    > .button {
-      width: 21.6rem;
+    svg {
+      font-size: 2.6rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
   }
 `

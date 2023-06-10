@@ -2,9 +2,19 @@ import { Container, Brand } from "./styles";
 import { Input } from "../Input"
 import { Button } from "../Button"
 import { FiLogOut, FiSearch } from "react-icons/fi"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useAuth } from "../../hooks/auth"
 
 export function HeaderAdmin() {
+  const { signOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
+
   return(
     <Container>
       <Brand to="/">
@@ -22,13 +32,15 @@ export function HeaderAdmin() {
         placeholder="Busque por pratos ou ingredientes"
       />
 
-      <Link to="/add" className="button">
+      <Link to="/add">
         <Button
           title="Novo prato"
         />
       </Link >
 
-      <FiLogOut />
+      <button onClick={handleSignOut}>
+        <FiLogOut />
+      </button>
     </Container>
   )
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.header`
-  grid-area: "header";
+  grid-area: 'header';
 
   width: 100%;
   height: 10.4rem;
@@ -15,13 +15,13 @@ export const Container = styled.header`
   align-items: center;
   gap: 3.2rem;
 
-  > svg {
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    width: 3.2rem;
-    height: 3.2rem;
- 
-    > .button {
-      width: 21.6rem;
+  > button {
+    border: none;
+    background-color: transparent;
+
+    svg {
+      font-size: 2.6rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
   }
 `
@@ -35,7 +35,7 @@ export const Brand = styled(Link)`
   font-size: 2.4rem;
   font-weight: 700;
 
-    > strong {
+  > strong {
     white-space: nowrap;
   }
 `
