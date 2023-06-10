@@ -3,7 +3,22 @@ import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
 
+import { useAuth } from '../../hooks/auth'
+import { useState } from 'react'
+
 export function SignIn() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { signIn } = useAuth()
+
+  function handleSignIn() {
+    if(!email || !password) {
+      return alert("Preencha todos os campos.")
+    }
+    signIn({ email, password })
+  }
+
   return (
     <Container>
       <Logo>
@@ -28,16 +43,20 @@ export function SignIn() {
           <p>E-mail</p>
           <Input 
             placeholder="exemplo@exemplo.com.br"
+            type="text"
+            onChange= {event => setEmail(event.target.value)}
           />
         </div>
         <div>
           <p>Senha</p>
           <Input 
             placeholder="No mínimo 6 caracteres"
+            type="password"
+            onChange= {event => setPassword(event.target.value)}
           />
         </div>
         <div>
-          <Button title="Entrar" />
+          <Button title="Entrar" onClick={handleSignIn}/>
         </div>
         <Link to="register">Criar uma conta</Link>
       </Form>
