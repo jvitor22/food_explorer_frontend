@@ -8,7 +8,7 @@ export function AddIngredient ({ isNew, value, onClick, ...rest}) {
         type='text'
         value={value}
         readOnly={!isNew}
-        placeholder='Novo marcador'
+        placeholder='Novo ingrediente'
         {...rest}
       />
 
