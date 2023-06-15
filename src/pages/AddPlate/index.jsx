@@ -10,44 +10,48 @@ import { useState } from 'react'
 import { api } from '../../services/api'
 
 export function AddPlate() {
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [category, setCategory] = useState("Selecione")
-  const [price, setPrice] = useState("")
-  const [image, setImage] = useState("")
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [category, setCategory] = useState('Selecione')
+  const [price, setPrice] = useState('')
+  const [image, setImage] = useState('')
 
   const [ingredients, setIngredients] = useState([])
-  const [newIngredient, setNewIngredient] = useState("")
+  const [newIngredient, setNewIngredient] = useState('')
 
   const navigate = useNavigate()
+  
+  function handleBack() {
+    navigate(-1)
+  }
 
   function handleAddIngredient() {
     setIngredients(prevState => [...prevState, newIngredient])
-    setNewIngredient("")
+    setNewIngredient('')
   }
 
   function handleRemoveIngredient(deleted) {
-    setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted))
+    setIngredients(prevState =>
+      prevState.filter(ingredient => ingredient !== deleted)
+    )
   }
 
   async function handleAddPlate() {
-    if (!title) {
-      return alert("Informe o nome do prato.")
-    }
-    
-    if (!price) {
-      return alert("Informe o valor do prato.")
+    if (!title || !price) {
+      return alert('Informe o nome e o preço do produto.')
+    }    
+
+    if (category == 'Selecione' || '') {
+      return alert('Selecione uma categoria para o produto.')
     }
 
-    if (category == "Selecione" || "") {
-      return alert("Selecione uma categoria para o produto.")
+    if (newIngredient || ingredients.length < 1) {
+      return alert(
+        'Você não adicionou o ingrediente!'
+      )
     }
 
-    if (newIngredient) {
-      return alert("Você esqueceu de salvar o ingrediente! Clique para salvar ou deixe o campo vazio.")
-    }
-
-    await api.post("plates", {
+    await api.post('plates', {
       title,
       description,
       category,
@@ -57,17 +61,17 @@ export function AddPlate() {
     })
 
     alert(`${category} cadastrada com sucesso!`)
-    navigate(-1)
+    handleBack()
   }
 
   return (
     <Container>
       <HeaderAdmin />
       <main>
-        <Link to="/">
+        <button className="backButton" onClick={handleBack}>
           <MdArrowBackIosNew />
-          <p>Voltar</p>
-        </Link>
+          Voltar
+        </button>
         <h1>Adicionar prato</h1>
 
         <div className="inputs">
@@ -77,20 +81,20 @@ export function AddPlate() {
               <FiUpload />
               Selecione imagem
             </label>
-            <input 
-              type="file" 
-              id="image" 
+            <input
+              type="file"
+              id="image"
               accept="image/*"
-              onChange={e => setImage(e.target.value)} 
+              onChange={e => setImage(e.target.value)}
             />
           </div>
 
           <div>
             <p>Nome</p>
-            <Input 
-              type="text" 
+            <Input
+              type="text"
               placeholder="Ex.: Salada Ceasar"
-              onChange={e => setTitle(e.target.value)} 
+              onChange={e => setTitle(e.target.value)}
             />
           </div>
 
@@ -108,31 +112,28 @@ export function AddPlate() {
         <div className="ingredientsAndPrice">
           <div>
             <p>Ingredientes</p>
-            <div className="ingredients">                        
-              <AddIngredient 
-                isNew 
+            <div className="ingredients">
+              <AddIngredient
+                isNew
                 value={newIngredient}
                 onChange={e => setNewIngredient(e.target.value)}
                 onClick={handleAddIngredient}
               />
 
-              {
-                ingredients.map((ingredient, index) => (
-                  <AddIngredient
-                    key={String(index)}
-                    value={ingredient}
-                    onClick={() => handleRemoveIngredient(ingredient)}
-                  />
-                ))
-              }
-
+              {ingredients.map((ingredient, index) => (
+                <AddIngredient
+                  key={String(index)}
+                  value={ingredient}
+                  onClick={() => handleRemoveIngredient(ingredient)}
+                />
+              ))}
             </div>
           </div>
 
           <div>
             <p>Preço</p>
-            <Input 
-              type="number" 
+            <Input
+              type="number"
               placeholder="R$ 00,00"
               onChange={e => setPrice(e.target.value)}
             />
@@ -141,13 +142,15 @@ export function AddPlate() {
 
         <div>
           <p>Descrição</p>
-          <textarea 
-            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição." 
+          <textarea
+            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição."
             onChange={e => setDescription(e.target.value)}
           />
         </div>
 
-        <button className="saveButton" onClick={handleAddPlate}>Salvar alterações</button>
+        <button className="saveButton" onClick={handleAddPlate}>
+          Salvar alterações
+        </button>
       </main>
       <Footer />
     </Container>

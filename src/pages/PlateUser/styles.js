@@ -16,22 +16,19 @@ export const Container = styled.div`
     overflow-y: auto;
     padding: 2.5rem 12.3rem;
 
-    font-family: 'Poppins', sans-serif;    
+    font-family: 'Poppins', sans-serif;
 
-    a {
+    .backButton {
       display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
       text-decoration: none;
-      font-size: 24px;
       color: ${({ theme }) => theme.COLORS.LIGHT_300};
-
-      P {
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 140%;
-        margin-top: -0.5rem;
-      }
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 140%;     
     }
 
     > div:nth-child(2) {
@@ -54,7 +51,7 @@ export const Container = styled.div`
 
       h1 {
         font-weight: 500;
-        font-size: 4.0rem;
+        font-size: 4rem;
         line-height: 140%;
       }
 
@@ -68,7 +65,7 @@ export const Container = styled.div`
         display: flex;
         gap: 1.2rem;
         flex-wrap: wrap;
-      }      
+      }
     }
 
     .addToCart {
@@ -95,6 +92,8 @@ export const Container = styled.div`
 
       span {
         font-size: 2rem;
+        width: 1.5rem;
+        text-align: center;
       }
     }
   }

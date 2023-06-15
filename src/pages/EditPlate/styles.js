@@ -22,20 +22,17 @@ export const Container = styled.div`
 
     font-family: 'Roboto', sans-serif;
 
-    a {
+    .backButton {
       display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
       text-decoration: none;
-      font-size: 24px;
       color: ${({ theme }) => theme.COLORS.LIGHT_300};
-
-      P {
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 140%;
-        margin-top: -0.5rem;
-      }
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 140%;     
     }
 
     h1 {

@@ -32,7 +32,7 @@ export function HeaderUser() {
       <div>
         <Button 
           icon={IoReceiptOutline}
-          title="Pedidos (0)"
+          title="Pedido (0)"
         />
       </div>
 

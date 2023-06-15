@@ -5,17 +5,23 @@ import { AddIngredient } from '../../components/AddIngredient'
 import { Footer } from '../../components/Footer'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { FiUpload } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export function EditPlate() {
+  const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
+
   return (
     <Container>
       <HeaderAdmin />
       <main>
-        <Link to="/">
+        <button className="backButton" onClick={handleBack}>
           <MdArrowBackIosNew />
-          <p>Voltar</p>
-        </Link>
+          Voltar
+        </button>
         <h1>Editar prato</h1>
 
         <div className="inputs">

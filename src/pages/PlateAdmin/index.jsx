@@ -4,41 +4,72 @@ import { Button } from '../../components/Button'
 import { Ingredients } from '../../components/Ingredients'
 import { Footer } from '../../components/Footer'
 import { MdArrowBackIosNew } from 'react-icons/md'
-import { FiPlus, FiMinus } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { api } from '../../services/api'
+import { useState, useEffect } from 'react'
 
 export function PlateAdmin() {
+  const [data, setData] = useState(null)
+  const params = useParams()
+  const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`;
+
+  const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
+
+  function navigateToEdit(id) {
+    navigate(`/edit/${id}`)
+  }
+
+  useEffect(() => {
+    async function fetchPlate() {
+      const response = await api.get(`/plates/${params.id}`)
+      setData(response.data)
+    }
+
+    fetchPlate()
+  }, [])
+
   return (
     <Container>
       <HeaderAdmin />
-      <main>
-        <Link to="/">
-          <MdArrowBackIosNew />
-          <p>Voltar</p>
-        </Link>
+      {
+        data &&
+        <main>
+          <button className="backButton" onClick={handleBack}>
+            <MdArrowBackIosNew />
+            Voltar
+          </button>
 
-        <div>
-          <img src="../../../src/assets/4.png" alt="" />
-          <div className="info">
-            <h1>Salada Ravanello</h1>
-            <p>
-              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.
-              O pão naan dá um toque especial.
-            </p>
-            <div className="ingredients">
-              <Ingredients title="alface" />
-              <Ingredients title="cebola" />
-              <Ingredients title="pão naan" />
-              <Ingredients title="pepino" />
-              <Ingredients title="rabanete" />
-              <Ingredients title="tomate" />
+          <div>
+            <img src={imageURL} alt="Imagem do produto" />
+            <div className="info">
+              <h1>{data.title}</h1>
+              <p>{data.description}</p>
+              {
+                data.ingredients &&
+                <div className="ingredients">
+                  {
+                    data.ingredients.map(ingredient => (
+                      <Ingredients
+                        key={String(ingredient.id)}
+                        title={ingredient.name}
+                      />
+                    ))
+                  }                  
+                </div>
+              }
+                <Button 
+                  className="button"
+                  title="Editar prato"
+                  onClick={() => navigateToEdit(data.id)}  
+                />
             </div>
-            <Link to="/edit/:id" className="button">
-              <Button title="Editar prato" />
-            </Link>
           </div>
-        </div>
-      </main>
+        </main>
+      }
       <Footer />
     </Container>
   )
