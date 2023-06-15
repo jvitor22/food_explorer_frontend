@@ -20,7 +20,7 @@ export function AddPlate() {
   const [newIngredient, setNewIngredient] = useState('')
 
   const navigate = useNavigate()
-  
+
   function handleBack() {
     navigate(-1)
   }
@@ -39,26 +39,39 @@ export function AddPlate() {
   async function handleAddPlate() {
     if (!title || !price) {
       return alert('Informe o nome e o preço do produto.')
-    }    
+    }
+
+    if (!image) {
+      return alert("Adicione uma imagem para o produto.")
+    }
 
     if (category == 'Selecione' || '') {
       return alert('Selecione uma categoria para o produto.')
     }
 
     if (newIngredient || ingredients.length < 1) {
-      return alert(
-        'Você não adicionou o ingrediente!'
-      )
+      return alert('Você não adicionou o ingrediente!')
     }
 
-    await api.post('plates', {
+    const response = await api.post('plates', {
       title,
       description,
       category,
       price,
-      image,
       ingredients
     })
+
+    const id = response.data?.id
+
+    if (id) {
+      await api.patch(`plates/${response.data?.id}/image`, {
+        image,
+      }, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+    }
 
     alert(`${category} cadastrada com sucesso!`)
     handleBack()
@@ -85,7 +98,7 @@ export function AddPlate() {
               type="file"
               id="image"
               accept="image/*"
-              onChange={e => setImage(e.target.value)}
+              onChange={e => setImage(e.target.files[0])}
             />
           </div>
 
@@ -113,13 +126,6 @@ export function AddPlate() {
           <div>
             <p>Ingredientes</p>
             <div className="ingredients">
-              <AddIngredient
-                isNew
-                value={newIngredient}
-                onChange={e => setNewIngredient(e.target.value)}
-                onClick={handleAddIngredient}
-              />
-
               {ingredients.map((ingredient, index) => (
                 <AddIngredient
                   key={String(index)}
@@ -127,6 +133,13 @@ export function AddPlate() {
                   onClick={() => handleRemoveIngredient(ingredient)}
                 />
               ))}
+
+              <AddIngredient
+                isNew
+                value={newIngredient}
+                onChange={e => setNewIngredient(e.target.value)}
+                onClick={handleAddIngredient}
+              />
             </div>
           </div>
 
