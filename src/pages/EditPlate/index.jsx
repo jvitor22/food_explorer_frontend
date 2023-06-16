@@ -51,7 +51,7 @@ export function EditPlate() {
       return alert('Você não adicionou o ingrediente!')
     }
 
-    const response = await api.put('plates', {
+    await api.put(`/plates/${params.id}`, {
       title,
       description,
       category,
@@ -59,16 +59,19 @@ export function EditPlate() {
       ingredients
     })
 
-    const id = response.data?.id
-
-    if (id && newImage) {
-      await api.patch(`plates/${response.data?.id}/image`, {
-        newImage,
-      }, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+    if (newImage) {
+      console.log(newImage)
+      await api.patch(
+        `plates/${params.id}/image`,
+        {
+          image: newImage
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }
-      })
+      )
     }
 
     alert(`${category} atualizada com sucesso!`)
@@ -76,11 +79,11 @@ export function EditPlate() {
   }
 
   async function handleRemovePlate() {
-    const isConfirm = confirm("Tem certeza que deseja remover?")
+    const isConfirm = confirm('Tem certeza que deseja remover?')
 
-    if(isConfirm) {
+    if (isConfirm) {
       await api.delete(`/plates/${params.id}`)
-      handleBack()
+      navigate("/")
     }
   }
 
@@ -88,13 +91,13 @@ export function EditPlate() {
     async function fetchPlate() {
       const response = await api.get(`/plates/${params.id}`)
 
-      const { title, description, category, image, price, ingredients } = response.data
+      const { title, description, category, image, price, ingredients } =
+        response.data
       setTitle(title)
       setDescription(description)
       setCategory(category)
       setPrice(price)
       setIngredients(ingredients.map(ingredient => ingredient.name))
-      setImage(image)
     }
 
     fetchPlate()
@@ -117,10 +120,10 @@ export function EditPlate() {
               <FiUpload />
               Selecione imagem
             </label>
-            <input 
-              type="file" 
-              id="image" 
-              accept="image/*" 
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
               onChange={e => setNewImage(e.target.files[0])}
             />
           </div>
@@ -171,8 +174,8 @@ export function EditPlate() {
 
           <div>
             <p>Novo preço</p>
-            <Input 
-              type="number" 
+            <Input
+              type="number"
               placeholder="R$ 00,00"
               onChange={e => setPrice(e.target.value)}
             />
@@ -181,16 +184,20 @@ export function EditPlate() {
 
         <div>
           <p>Descrição</p>
-          <textarea 
-            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição." 
+          <textarea
+            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição."
             value={description}
             onChange={e => setDescription(e.target.value)}
           />
         </div>
 
         <div className="buttons">
-          <button className="deleteButton" onClick={handleRemovePlate}>Excluir prato</button>
-          <button className="saveButton" onClick={handleEditPlate}>Salvar alterações</button>
+          <button className="deleteButton" onClick={handleRemovePlate}>
+            Excluir prato
+          </button>
+          <button className="saveButton" onClick={handleEditPlate}>
+            Salvar alterações
+          </button>
         </div>
       </main>
       <Footer />
