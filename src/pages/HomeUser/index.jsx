@@ -1,13 +1,49 @@
-import { Container } from "./styles"
-import { HeaderUser } from "../../components/HeaderUser"
-import { Footer } from "../../components/Footer"
-import { CardUser } from "../../components/CardUser"
-import { Link } from 'react-router-dom'
+import { Container } from './styles'
+import { HeaderUser } from '../../components/HeaderUser'
+import { Footer } from '../../components/Footer'
+import { CardUser } from '../../components/CardUser'
+import { useEffect, useState } from 'react'
+import { api } from '../../services/api'
 
 export function HomeUser() {
-  return(
+  const [plates, setPlates] = useState([])
+  const [mainPlates, setMainPlates] = useState([])
+  const [desserts, setDesserts] = useState([])
+  const [drinks, setDrinks] = useState([])
+
+  const [search, setSearch] = useState('')
+
+  function handleInputChange(event) {
+    const value = event.target.value
+    setSearch(value)
+  }
+
+  function handleCategory() {
+    const mainPlatesData = plates.filter(plate => plate.category === 'Refeição')
+    const dessertsData = plates.filter(plate => plate.category === 'Sobremesa')
+    const drinksData = plates.filter(plate => plate.category === 'Bebida')
+
+    setMainPlates(mainPlatesData)
+    setDesserts(dessertsData)
+    setDrinks(drinksData)
+  }
+
+  useEffect(() => {
+    async function fetchPlates() {
+      const response = await api.get(`/plates?title=${search}`)
+      setPlates(response.data)
+    }
+
+    fetchPlates()
+  }, [search])
+
+  useEffect(() => {
+    handleCategory()
+  }, [plates])
+
+  return (
     <Container>
-      <HeaderUser />
+      <HeaderUser onInputChange={handleInputChange} />
       <main>
         <div className="folder">
           <img src="../../../src/assets/home-img.svg" alt="" />
@@ -18,8 +54,22 @@ export function HomeUser() {
         </div>
 
         <div className="cards">
-          {/* falta fazer o carrossel */}
+          <div className="mainPlatesCards">
+            {mainPlates &&
+              mainPlates.map(plate => <CardUser key={plate.id} data={plate} />)}
+          </div>
+
+          <div className="dessertsCards">
+            {desserts &&
+              desserts.map(plate => <CardUser key={plate.id} data={plate} />)}
+          </div>
+
+          <div className="drinksCards">
+            {drinks &&
+              drinks.map(plate => <CardUser key={plate.id} data={plate} />)}
+          </div>
         </div>
+
       </main>
       <Footer />
     </Container>

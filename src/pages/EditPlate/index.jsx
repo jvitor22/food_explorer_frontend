@@ -60,7 +60,6 @@ export function EditPlate() {
     })
 
     if (newImage) {
-      console.log(newImage)
       await api.patch(
         `plates/${params.id}/image`,
         {
@@ -79,9 +78,9 @@ export function EditPlate() {
   }
 
   async function handleRemovePlate() {
-    const isConfirm = confirm('Tem certeza que deseja remover?')
+    const confirm = confirm('Tem certeza que deseja remover?')
 
-    if (isConfirm) {
+    if (confirm) {
       await api.delete(`/plates/${params.id}`)
       navigate("/")
     }
@@ -91,7 +90,7 @@ export function EditPlate() {
     async function fetchPlate() {
       const response = await api.get(`/plates/${params.id}`)
 
-      const { title, description, category, image, price, ingredients } =
+      const { title, description, category, price, ingredients } =
         response.data
       setTitle(title)
       setDescription(description)

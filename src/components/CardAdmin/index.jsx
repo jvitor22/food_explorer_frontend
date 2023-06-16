@@ -1,17 +1,25 @@
 import { Container } from './styles'
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit } from 'react-icons/ai'
+import { api } from '../../services/api'
+import { Link } from 'react-router-dom'
 
+export function CardAdmin({ data }) {
+  const imageSrc = api.defaults.baseURL + `/files/${data.image}`
+  const linkToEdit = `/edit/${data.id}`
+  const linkToPlate = `/plate-admin/${data.id}`
+  const price = `R$ ${data.price}`
 
-export function CardAdmin() {
   return (
     <Container>
-      <button className="editIcon">
+      <Link to={linkToEdit} className="editIcon">
         <AiOutlineEdit />
-      </button>
-      <img src="../../../src/assets/3.png" alt="" />
-      <h1>Spaguetti Gambe</h1>
-      <p>Massa fresca com camarões e pesto.</p>
-      <span>R$ 79,90</span>      
+      </Link>
+      <img src={imageSrc} alt={data.title} />
+      <Link to={linkToPlate}>
+        <h1>{data.title}</h1>
+      </Link>
+      <p>{data.description}</p>
+      <span>{price}</span>
     </Container>
   )
 }

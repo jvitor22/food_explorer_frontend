@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { useAuth } from "../../hooks/auth"
 
-export function HeaderAdmin() {
+export function HeaderAdmin( { onInputChange } ) {
   const { signOut } = useAuth()
   const navigate = useNavigate()
 
@@ -30,6 +30,7 @@ export function HeaderAdmin() {
       <Input
         icon={FiSearch}
         placeholder="Busque por pratos ou ingredientes"
+        onChange={onInputChange}
       />
 
       <Link to="/add">
