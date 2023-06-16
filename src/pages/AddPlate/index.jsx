@@ -5,7 +5,7 @@ import { AddIngredient } from '../../components/AddIngredient'
 import { Footer } from '../../components/Footer'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { FiUpload } from 'react-icons/fi'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { api } from '../../services/api'
 
