@@ -40,6 +40,7 @@ export const Container = styled.div`
       img {
         height: 39rem;
         width: 39rem;
+        border-radius: 50%;
       }
     }
 

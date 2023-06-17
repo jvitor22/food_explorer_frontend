@@ -25,7 +25,8 @@ export const Container = styled.div`
     width: 100%;
     height: 26rem;
     padding-right: 10rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 6.2rem;
     position: relative;
 
     display: flex;
@@ -41,9 +42,9 @@ export const Container = styled.div`
     > div {
       h1 {
         font-weight: 500;
-        font-size: 4.0rem;
+        font-size: 4rem;
         line-height: 140%;
-        margin-bottom: .8rem;
+        margin-bottom: 0.8rem;
       }
 
       p {
@@ -55,7 +56,23 @@ export const Container = styled.div`
     }
   }
 
-  .mainPlatesCards, .dessertsCards, .drinksCards {
+  .cards {
     display: flex;
-  } 
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .sectionTitle {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 140%;
+    margin-bottom: 2.4rem;
+  }
+  .mainPlatesCards,
+  .dessertsCards,
+  .drinksCards {
+    display: flex;
+    gap: 2.7rem;
+    overflow-x: auto;
+  }
 `

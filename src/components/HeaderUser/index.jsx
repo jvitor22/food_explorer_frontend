@@ -26,7 +26,7 @@ export function HeaderUser( { onInputChange } ) {
 
       <Input
         icon={FiSearch}
-        placeholder="Busque por pratos ou ingredientes"
+        placeholder="Busque por pratos"
         onChange={onInputChange}
       />
 

@@ -54,20 +54,29 @@ export function HomeUser() {
         </div>
 
         <div className="cards">
-          <div className="mainPlatesCards">
-            {mainPlates &&
-              mainPlates.map(plate => <CardUser key={plate.id} data={plate} />)}
-          </div>
+          <section>
+            <h1 className='sectionTitle'>Refeições</h1>
+            <div className="mainPlatesCards">
+              {mainPlates &&
+                mainPlates.map(plate => <CardUser key={plate.id} data={plate} />)}
+            </div>
+          </section>
 
-          <div className="dessertsCards">
-            {desserts &&
-              desserts.map(plate => <CardUser key={plate.id} data={plate} />)}
-          </div>
+          <section>
+            <h1 className='sectionTitle'>Sobremesas</h1>
+            <div className="dessertsCards">
+              {desserts &&
+                desserts.map(plate => <CardUser key={plate.id} data={plate} />)}
+            </div>  
+          </section>
 
-          <div className="drinksCards">
-            {drinks &&
-              drinks.map(plate => <CardUser key={plate.id} data={plate} />)}
-          </div>
+          <section>
+            <h1 className='sectionTitle'>Bebidas</h1>
+            <div className="drinksCards">
+              {drinks &&
+                drinks.map(plate => <CardUser key={plate.id} data={plate} />)}
+            </div>
+          </section>
         </div>
 
       </main>

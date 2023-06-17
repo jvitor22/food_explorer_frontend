@@ -7,7 +7,8 @@ export const Container = styled.div`
   align-items: center;
   gap: 1.5rem;
 
-  width: 30.4rem;
+  min-width: 30.4rem;
+  max-width: 30.4rem;
   height: 46.2rem;
   padding: 2.4rem;
   border-radius: 5px;
@@ -33,6 +34,7 @@ export const Container = styled.div`
   img {
     height: 17.6rem;
     width: 17.6rem;
+    border-radius: 50%;
   }
 
   h1 {
@@ -41,12 +43,16 @@ export const Container = styled.div`
     font-size: 24px;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
+    text-align: center;
   }
 
   p {
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
+    height: 4.4rem;
+    overflow: hidden;
+    text-align: center;
   }
 
   > span {

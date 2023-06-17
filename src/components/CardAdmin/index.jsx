@@ -4,7 +4,7 @@ import { api } from '../../services/api'
 import { Link } from 'react-router-dom'
 
 export function CardAdmin({ data }) {
-  const imageSrc = api.defaults.baseURL + `/files/${data.image}`
+  const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`
   const linkToEdit = `/edit/${data.id}`
   const linkToPlate = `/plate-admin/${data.id}`
   const price = `R$ ${data.price}`
@@ -14,7 +14,7 @@ export function CardAdmin({ data }) {
       <Link to={linkToEdit} className="editIcon">
         <AiOutlineEdit />
       </Link>
-      <img src={imageSrc} alt={data.title} />
+      <img src={imageURL} alt={data.title} />
       <Link to={linkToPlate}>
         <h1>{data.title}</h1>
       </Link>
