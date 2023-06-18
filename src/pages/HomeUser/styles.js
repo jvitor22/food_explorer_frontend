@@ -68,11 +68,47 @@ export const Container = styled.div`
     line-height: 140%;
     margin-bottom: 2.4rem;
   }
+
+  .carousel {
+    display: flex;
+    position: relative;
+  }
+
   .mainPlatesCards,
   .dessertsCards,
   .drinksCards {
     display: flex;
     gap: 2.7rem;
     overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .mainPlatesCards::-webkit-scrollbar,
+  .dessertsCards::-webkit-scrollbar,
+  .drinksCards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .leftButton,
+  .rightButton {
+    height: 46.2rem;
+    width: 10rem;
+    border: none;
+
+    > svg {
+      font-size: 4.5rem;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+  }
+
+  .leftButton {
+    position: absolute;
+    background: linear-gradient(270deg, rgba(0, 10, 15, 0.09) 0%, #000a0f 100%);
+  }
+
+  .rightButton {
+    position: absolute;
+    right: 0;
+    background: linear-gradient(90deg, rgba(0, 10, 15, 0.09) 0%, #000a0f 100%);
   }
 `

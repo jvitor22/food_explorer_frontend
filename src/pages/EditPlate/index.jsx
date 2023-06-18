@@ -78,9 +78,9 @@ export function EditPlate() {
   }
 
   async function handleRemovePlate() {
-    const confirm = confirm('Tem certeza que deseja remover?')
+    const isConfirm = confirm('Tem certeza que deseja remover?')
 
-    if (confirm) {
+    if (isConfirm) {
       await api.delete(`/plates/${params.id}`)
       navigate("/")
     }

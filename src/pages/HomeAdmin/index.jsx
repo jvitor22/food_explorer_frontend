@@ -2,8 +2,9 @@ import { Container } from './styles'
 import { HeaderAdmin } from '../../components/HeaderAdmin'
 import { Footer } from '../../components/Footer'
 import { CardAdmin } from '../../components/CardAdmin'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { api } from '../../services/api'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 export function HomeAdmin() {
   const [plates, setPlates] = useState([])
@@ -12,6 +13,10 @@ export function HomeAdmin() {
   const [drinks, setDrinks] = useState([])
 
   const [search, setSearch] = useState('')
+
+  const mainPlatesCarousel = useRef(null)
+  const dessertsCarousel = useRef(null)
+  const drinksCarousel = useRef(null)
 
   function handleInputChange(event) {
     const value = event.target.value
@@ -28,9 +33,39 @@ export function HomeAdmin() {
     setDrinks(drinksData)
   }
 
+  function handleMainPlatesLeft (e) {
+    e.preventDefault()
+    mainPlatesCarousel.current.scrollLeft -= mainPlatesCarousel.current.offsetWidth
+  }
+
+  function handleMainPlatesRight (e) {
+    e.preventDefault()
+    mainPlatesCarousel.current.scrollLeft += mainPlatesCarousel.current.offsetWidth
+  }
+  
+  function handleDessertsLeft(e) {
+    e.preventDefault()
+    dessertsCarousel.current.scrollLeft -= dessertsCarousel.current.offsetWidth
+  }
+
+  function handleDessertsRight(e) {
+    e.preventDefault()
+    dessertsCarousel.current.scrollLeft += dessertsCarousel.current.offsetWidth
+  }
+  
+  function handleDrinksLeft(e) {
+    e.preventDefault()
+    drinksCarousel.current.scrollLeft -= drinksCarousel.current.offsetWidth
+  }
+
+  function handleDrinksRight(e) {
+    e.preventDefault()
+    drinksCarousel.current.scrollLeft += drinksCarousel.current.offsetWidth
+  }
+
   useEffect(() => {
     async function fetchPlates() {
-      const response = await api.get(`/plates?title=${search}&ingredients=${search}`)
+      const response = await api.get(`/plates?title=${search}`)
       setPlates(response.data)
     }
 
@@ -55,26 +90,56 @@ export function HomeAdmin() {
 
         <div className="cards">
           <section>
-            <h1 className='sectionTitle'>Refeições</h1>
-            <div className="mainPlatesCards">
-              {mainPlates &&
-                mainPlates.map(plate => <CardAdmin key={plate.id} data={plate} />)}
+            <h1 className="sectionTitle">Refeições</h1>
+            <div className="carousel" >
+              <div className="mainPlatesCards" ref={mainPlatesCarousel}>
+                {mainPlates &&
+                  mainPlates.map(plate => (
+                    <CardAdmin key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleMainPlatesLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleMainPlatesRight}>
+                <FiChevronRight />
+              </button>
             </div>
           </section>
 
           <section>
-            <h1 className='sectionTitle'>Sobremesas</h1>
-            <div className="dessertsCards">
-              {desserts &&
-                desserts.map(plate => <CardAdmin key={plate.id} data={plate} />)}
+            <h1 className="sectionTitle">Sobremesas</h1>
+            <div className="carousel" >
+              <div className="dessertsCards" ref={dessertsCarousel}>
+                {desserts &&
+                  desserts.map(plate => (
+                    <CardAdmin key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleDessertsLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleDessertsRight}>
+                <FiChevronRight />
+              </button>
             </div>
           </section>
 
           <section>
-            <h1 className='sectionTitle'>Bebidas</h1>
-            <div className="drinksCards">
-              {drinks &&
-                drinks.map(plate => <CardAdmin key={plate.id} data={plate} />)}
+            <h1 className="sectionTitle">Bebidas</h1>
+            <div className="carousel" >
+              <div className="drinksCards" ref={drinksCarousel}>
+                {drinks &&
+                  drinks.map(plate => (
+                    <CardAdmin key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleDrinksLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleDrinksRight}>
+                <FiChevronRight />
+              </button>
             </div>
           </section>
         </div>

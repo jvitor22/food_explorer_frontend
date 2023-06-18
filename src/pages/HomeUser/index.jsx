@@ -2,8 +2,9 @@ import { Container } from './styles'
 import { HeaderUser } from '../../components/HeaderUser'
 import { Footer } from '../../components/Footer'
 import { CardUser } from '../../components/CardUser'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { api } from '../../services/api'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 export function HomeUser() {
   const [plates, setPlates] = useState([])
@@ -12,6 +13,10 @@ export function HomeUser() {
   const [drinks, setDrinks] = useState([])
 
   const [search, setSearch] = useState('')
+
+  const mainPlatesCarousel = useRef(null)
+  const dessertsCarousel = useRef(null)
+  const drinksCarousel = useRef(null)
 
   function handleInputChange(event) {
     const value = event.target.value
@@ -26,6 +31,36 @@ export function HomeUser() {
     setMainPlates(mainPlatesData)
     setDesserts(dessertsData)
     setDrinks(drinksData)
+  }
+
+  function handleMainPlatesLeft (e) {
+    e.preventDefault()
+    mainPlatesCarousel.current.scrollLeft -= mainPlatesCarousel.current.offsetWidth
+  }
+
+  function handleMainPlatesRight (e) {
+    e.preventDefault()
+    mainPlatesCarousel.current.scrollLeft += mainPlatesCarousel.current.offsetWidth
+  }
+  
+  function handleDessertsLeft(e) {
+    e.preventDefault()
+    dessertsCarousel.current.scrollLeft -= dessertsCarousel.current.offsetWidth
+  }
+
+  function handleDessertsRight(e) {
+    e.preventDefault()
+    dessertsCarousel.current.scrollLeft += dessertsCarousel.current.offsetWidth
+  }
+  
+  function handleDrinksLeft(e) {
+    e.preventDefault()
+    drinksCarousel.current.scrollLeft -= drinksCarousel.current.offsetWidth
+  }
+
+  function handleDrinksRight(e) {
+    e.preventDefault()
+    drinksCarousel.current.scrollLeft += drinksCarousel.current.offsetWidth
   }
 
   useEffect(() => {
@@ -54,27 +89,57 @@ export function HomeUser() {
         </div>
 
         <div className="cards">
-          <section>
-            <h1 className='sectionTitle'>Refeições</h1>
-            <div className="mainPlatesCards">
-              {mainPlates &&
-                mainPlates.map(plate => <CardUser key={plate.id} data={plate} />)}
+        <section>
+            <h1 className="sectionTitle">Refeições</h1>
+            <div className="carousel" >
+              <div className="mainPlatesCards" ref={mainPlatesCarousel}>
+                {mainPlates &&
+                  mainPlates.map(plate => (
+                    <CardUser key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleMainPlatesLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleMainPlatesRight}>
+                <FiChevronRight />
+              </button>
             </div>
           </section>
 
           <section>
-            <h1 className='sectionTitle'>Sobremesas</h1>
-            <div className="dessertsCards">
-              {desserts &&
-                desserts.map(plate => <CardUser key={plate.id} data={plate} />)}
-            </div>  
+            <h1 className="sectionTitle">Sobremesas</h1>
+            <div className="carousel" >
+              <div className="dessertsCards" ref={dessertsCarousel}>
+                {desserts &&
+                  desserts.map(plate => (
+                    <CardUser key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleDessertsLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleDessertsRight}>
+                <FiChevronRight />
+              </button>
+            </div>
           </section>
 
           <section>
-            <h1 className='sectionTitle'>Bebidas</h1>
-            <div className="drinksCards">
-              {drinks &&
-                drinks.map(plate => <CardUser key={plate.id} data={plate} />)}
+            <h1 className="sectionTitle">Bebidas</h1>
+            <div className="carousel" >
+              <div className="drinksCards" ref={drinksCarousel}>
+                {drinks &&
+                  drinks.map(plate => (
+                    <CardUser key={plate.id} data={plate} />
+                  ))}
+              </div>
+              <button className="leftButton" onClick={handleDrinksLeft}>
+                <FiChevronLeft />
+              </button>
+              <button className="rightButton" onClick={handleDrinksRight}>
+                <FiChevronRight />
+              </button>
             </div>
           </section>
         </div>
