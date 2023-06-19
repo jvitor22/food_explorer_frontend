@@ -28,7 +28,7 @@ export const Container = styled.div`
       font-size: 24px;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      line-height: 140%;     
+      line-height: 140%;
     }
 
     > div:nth-child(2) {
@@ -95,6 +95,49 @@ export const Container = styled.div`
         font-size: 2rem;
         width: 1.5rem;
         text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 1050px) {
+    > main .info h1 {
+      font-size: 3rem;
+    }
+
+    > main .info p {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 892px) {
+    > main {
+      > div:nth-child(2) {
+        img {
+          height: 26.4rem;
+          width: 26.4rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-rows: 22rem auto 7.7rem;
+
+    > main {
+      padding: 2.5rem 6.4rem;
+
+      .backButton {
+        font-size: 1.8rem;
+      }
+
+      > div:nth-child(2) {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .addToCart,
+      .ingredients {
+        margin: 0 auto;
       }
     }
   }

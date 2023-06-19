@@ -4,6 +4,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
+  width: 100%;
+
   background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.LIGHT_600};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 

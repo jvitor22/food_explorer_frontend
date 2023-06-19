@@ -11,7 +11,6 @@ export const Container = styled.header`
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 3.2rem;
 
@@ -23,6 +22,17 @@ export const Container = styled.header`
       font-size: 2.6rem;
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
+  }
+
+  @media (max-width: 892px) {
+    padding: 2.4rem 6.4rem;
+  }
+
+  @media (max-width: 760px) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 22rem;
   }
 `
 

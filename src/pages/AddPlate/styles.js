@@ -21,7 +21,7 @@ export const Container = styled.div`
     padding: 2.5rem 12.3rem;
 
     font-family: 'Roboto', sans-serif;
-    
+
     .backButton {
       display: flex;
       align-items: center;
@@ -32,7 +32,7 @@ export const Container = styled.div`
       font-size: 24px;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      line-height: 140%;     
+      line-height: 140%;
     }
 
     h1 {
@@ -40,7 +40,7 @@ export const Container = styled.div`
       font-weight: 500;
       font-size: 3.2rem;
       line-height: 140%;
-    }   
+    }
 
     p {
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
@@ -92,14 +92,14 @@ export const Container = styled.div`
       border-radius: 0.5rem;
       background-color: ${({ theme }) => theme.COLORS.DARK_900};
       padding: 1.6rem;
-      
+
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
       font-weight: 400;
       font-size: 1.4rem;
       line-height: 160%;
-      font-family: 'Roboto', sans-serif; 
-      
-      cursor: pointer;      
+      font-family: 'Roboto', sans-serif;
+
+      cursor: pointer;
     }
   }
 
@@ -140,8 +140,7 @@ export const Container = styled.div`
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 100%;
-    font-family: 'Roboto', sans-serif;      
-
+    font-family: 'Roboto', sans-serif;
 
     &::placeholder {
       color: ${({ theme }) => theme.COLORS.LIGHT_500};
@@ -157,7 +156,7 @@ export const Container = styled.div`
     height: 4.8rem;
     padding: 1.2rem 2.4rem;
 
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border: none;
 
     background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
@@ -172,5 +171,40 @@ export const Container = styled.div`
     font-size: 1.4rem;
     line-height: 2.4rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
+  }
+
+  @media (max-width: 918px) {
+    main {
+      padding: 2.5rem 6.4rem;
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-rows: 23rem auto 7.7rem;
+
+    main {
+      .backButton {
+        font-size: 1.8rem;
+      }
+
+      .inputs,
+      .ingredientsAndPrice,
+      .ingredients {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ingredients {
+        height: 100%;        
+      }
+
+      .saveButton {
+        width: 100%;
+      }
+    }
   }
 `

@@ -68,48 +68,120 @@ export const Container = styled.div`
     line-height: 140%;
     margin-bottom: 2.4rem;
   }
- 
+
   .carousel {
     display: flex;
     position: relative;
   }
-  
+
   .mainPlatesCards,
   .dessertsCards,
   .drinksCards {
     display: flex;
     gap: 2.7rem;
     overflow-x: auto;
-    scroll-behavior: smooth;    
+    scroll-behavior: smooth;
   }
 
   .mainPlatesCards::-webkit-scrollbar,
   .dessertsCards::-webkit-scrollbar,
-  .drinksCards::-webkit-scrollbar { 
+  .drinksCards::-webkit-scrollbar {
     display: none;
-  } 
-  
+  }
+
   .leftButton,
   .rightButton {
     height: 46.2rem;
     width: 10rem;
     border: none;
-    
+
     > svg {
       font-size: 4.5rem;
       color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
   }
-  
-  .leftButton{
+
+  .leftButton {
     position: absolute;
-    background: linear-gradient(270deg, rgba(0, 10, 15, 0.09) 0%, #000A0F 100%);    
-    
+    background: linear-gradient(270deg, rgba(0, 10, 15, 0.09) 0%, #000a0f 100%);
   }
-  
+
   .rightButton {
     position: absolute;
     right: 0;
-    background: linear-gradient(90deg, rgba(0, 10, 15, 0.09) 0%, #000A0F 100%);  
+    background: linear-gradient(90deg, rgba(0, 10, 15, 0.09) 0%, #000a0f 100%);
+  }
+
+  @media (max-width: 1312px) {
+    .folder {
+      img {
+        width: 500px;
+      }
+    }
+  }
+
+  @media (max-width: 1212px) {
+    .folder {
+      height: 18rem;
+      margin-top: -8rem;
+
+      img {
+        width: 350px;
+      }
+
+      > div {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 892px) {
+    main {
+      padding: 16.4rem 6.4rem 4.8rem;
+    }
+
+    .folder {
+      height: 14rem;
+      padding-right: 4rem;
+
+      img {
+        width: 300px;
+      }
+
+      > div {
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-rows: 23rem auto 7.7rem;
+    
+    .folder {
+      height: 14rem;
+      padding-right: 2rem;
+
+      img {
+        width: 250px;
+      }
+
+      > div {
+        p {
+          font-size: 1.0rem;
+        }
+      }
+    }
   }
 `

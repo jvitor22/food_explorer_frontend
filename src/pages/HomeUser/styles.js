@@ -111,4 +111,77 @@ export const Container = styled.div`
     right: 0;
     background: linear-gradient(90deg, rgba(0, 10, 15, 0.09) 0%, #000a0f 100%);
   }
+
+  @media (max-width: 1312px) {
+    .folder {
+      img {
+        width: 500px;
+      }
+    }
+  }
+
+  @media (max-width: 1212px) {
+    .folder {
+      height: 18rem;
+      margin-top: -8rem;
+
+      img {
+        width: 350px;
+      }
+
+      > div {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 892px) {
+    main {
+      padding: 16.4rem 6.4rem 4.8rem;
+    }
+
+    .folder {
+      height: 14rem;
+      padding-right: 4rem;
+
+      img {
+        width: 300px;
+      }
+
+      > div {
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-rows: 22rem auto 7.7rem;
+    
+    .folder {
+      height: 14rem;
+      padding-right: 2rem;
+
+      img {
+        width: 250px;
+      }
+
+      > div {
+        p {
+          font-size: 1.0rem;
+        }
+      }
+    }
+  }
 `

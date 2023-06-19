@@ -32,7 +32,7 @@ export const Container = styled.div`
       font-size: 24px;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      line-height: 140%;     
+      line-height: 140%;
     }
 
     h1 {
@@ -181,5 +181,43 @@ export const Container = styled.div`
 
   .deleteButton {
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
+  }
+
+  @media (max-width: 918px) {
+    main {
+      padding: 2.5rem 6.4rem;
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 760px) {
+    grid-template-rows: 23rem auto 7.7rem;
+
+    main {
+      .backButton {
+        font-size: 1.8rem;
+      }
+
+      .inputs,
+      .ingredientsAndPrice,
+      .ingredients {
+        display: flex;
+        flex-direction: column;        
+      }
+
+      .ingredients {
+        height: 100%;        
+      }
+
+      .saveButton,
+      .deleteButton {
+        width: 100%;
+        padding: 1.2rem 1rem;
+        font-size: 1rem;
+      }
+    }
   }
 `

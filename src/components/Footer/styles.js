@@ -19,6 +19,18 @@ export const Container = styled.footer`
     line-height: 160%;
     color: ${({ theme }) => theme.COLORS.LIGHT_200};
   }
+
+  @media (max-width: 892px) {
+    padding: 2.4rem 6.4rem;
+  }
+  
+  @media (max-width: 550px) {
+    justify-content: center;
+
+    p {
+      display: none;      
+    }
+  }
 `
 
 export const Brand = styled.div`
