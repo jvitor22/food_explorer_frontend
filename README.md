@@ -106,7 +106,7 @@ $ password: admin123
 
 ```bash
 # Clone este repositório
-$ https://github.com/gregoryAlvim/frontend-FoodExplorer.git
+$ https://github.com/jvitor22/food_explorer_frontend.git
 # Acesse a pasta do projeto no terminal/cmd
 $ cd + sua pasta + git clone https://github.com/jvitor22/food_explorer_frontend.git
 # Instale as dependências com:
