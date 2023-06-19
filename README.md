@@ -11,7 +11,6 @@
    <a href="#features"> Features </a> •
    <a href="#-layout">Layout</a> •
    <a href="#tecnologias"> Tecnologias </a> •
-   <a href="#como executar o projeto"> Como executar o projeto </a> •
    <a href="#requisitos"> Requisitos </a> •
 </p>
 
