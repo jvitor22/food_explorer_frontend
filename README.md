@@ -95,7 +95,7 @@ $ npm run migrate
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
 # Login do admin
-$ email: adming@email.com
+$ email: admin@email.com
 $ password: admin123
 # O servidor iniciará na porta:3000 - acesse <http://localhost:3000>
 ```
