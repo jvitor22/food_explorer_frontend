@@ -42,7 +42,7 @@ O frontend foi desenvolvido do zero, utilizando a prototipação disponível no 
 
 O layout da aplicação está disponível no Figma:
 
-<a href="https://www.figma.com/file/xP2dFPdN2Yc7JWJr7wDC2X/food-explorer-v2-(Community)?type=design&node-id=201-1532&t=jqnK9ldtRr9wHFSC-0>
+<a href="https://www.figma.com/file/xP2dFPdN2Yc7JWJr7wDC2X/food-explorer-v2-(Community)?type=design&node-id=201-1532&t=jqnK9ldtRr9wHFSC-0">
   Figma
 </a>
 
@@ -91,7 +91,7 @@ $ npm run dev
 # Login do admin
 $ email: adming@email.com
 $ password: admin123
-# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
+# O servidor iniciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
 <br/>
@@ -107,7 +107,7 @@ $ cd + sua pasta + git clone https://github.com/jvitor22/food_explorer_frontend.
 $ npm install
 # Rode a aplicação em modo de desenvolvimento:
 $ npm run dev
-# O servidor inciará na porta:3333 - acesse <   http://127.0.0.1:5173/ >
+# O servidor iniciará na porta:3000 - acesse <   http://127.0.0.1:5173/ >
 ```
 
 ---
