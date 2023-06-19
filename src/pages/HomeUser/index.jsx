@@ -83,7 +83,7 @@ export function HomeUser() {
       <HeaderUser onInputChange={handleInputChange} />
       <main>
         <div className="folder">
-          <img src="../../../src/assets/banner.png" alt="" />
+          <img src="/banner.png" alt="" />
           <div>
             <h1>Sabores inigualáveis</h1>
             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
