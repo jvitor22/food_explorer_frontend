@@ -1,8 +1,12 @@
-<h1>
+<h1 align="center">
     <a href="#"> Food Explorer </a>
 </h1>
 
-<p align="center"> A aplicação que foi desenvolvida é um cardápio digital para um restaurante fictício, conhecido como Food Explorer. O Frontend da aplicação foi desenvolvido com JavaScript e React.js </p>
+<h4 align="center"> 
+	 Status: Em desenvolvimento...
+</h4>
+
+<p align="center"> Esta aplicação é um cardápio digital para um restaurante fictício, conhecido como Food Explorer. O Frontend da aplicação foi desenvolvido com JavaScript e React.js </p>
 
 #
 
@@ -34,6 +38,7 @@ O frontend foi desenvolvido do zero, utilizando a prototipação disponível no 
 - [x] Possibilidade de fazer uma busca pelo nome do prato;
 - [x] O admin pode fazer upload de imagens para cadastrar e editar os produtos;
 - [x] Aplicação responsiva: utilizado o conceito de Mobile First;
+- [X] A interface consome sua API;
 - [x] Deploy da aplicação.
 
 <br/>
@@ -43,7 +48,7 @@ O frontend foi desenvolvido do zero, utilizando a prototipação disponível no 
 O layout da aplicação está disponível no Figma:
 
 <a href="https://www.figma.com/file/xP2dFPdN2Yc7JWJr7wDC2X/food-explorer-v2-(Community)?type=design&node-id=201-1532&t=jqnK9ldtRr9wHFSC-0">
-  Figma
+  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
 </a>
 
 <br/>
@@ -74,6 +79,7 @@ Este projeto é divido em duas partes:
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/).
 
 ## 🎲 Rodando o Back End (servidor)
 
