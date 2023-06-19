@@ -37,6 +37,8 @@ export const Container = styled.div`
       position: absolute;
       bottom: 0;
       left: -5.5rem;
+      width: 65.6rem;
+      opacity: .7;
     }
 
     > div {
