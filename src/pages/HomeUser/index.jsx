@@ -33,16 +33,18 @@ export function HomeUser() {
     setDrinks(drinksData)
   }
 
-  function handleMainPlatesLeft (e) {
+  function handleMainPlatesLeft(e) {
     e.preventDefault()
-    mainPlatesCarousel.current.scrollLeft -= mainPlatesCarousel.current.offsetWidth
+    mainPlatesCarousel.current.scrollLeft -=
+      mainPlatesCarousel.current.offsetWidth
   }
 
-  function handleMainPlatesRight (e) {
+  function handleMainPlatesRight(e) {
     e.preventDefault()
-    mainPlatesCarousel.current.scrollLeft += mainPlatesCarousel.current.offsetWidth
+    mainPlatesCarousel.current.scrollLeft +=
+      mainPlatesCarousel.current.offsetWidth
   }
-  
+
   function handleDessertsLeft(e) {
     e.preventDefault()
     dessertsCarousel.current.scrollLeft -= dessertsCarousel.current.offsetWidth
@@ -52,7 +54,7 @@ export function HomeUser() {
     e.preventDefault()
     dessertsCarousel.current.scrollLeft += dessertsCarousel.current.offsetWidth
   }
-  
+
   function handleDrinksLeft(e) {
     e.preventDefault()
     drinksCarousel.current.scrollLeft -= drinksCarousel.current.offsetWidth
@@ -81,7 +83,7 @@ export function HomeUser() {
       <HeaderUser onInputChange={handleInputChange} />
       <main>
         <div className="folder">
-          <img src="src/assets/banner.png" alt="" />
+          <img src="../../../src/assets/banner.png" alt="" />
           <div>
             <h1>Sabores inigualáveis</h1>
             <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
@@ -89,9 +91,9 @@ export function HomeUser() {
         </div>
 
         <div className="cards">
-        <section>
+          <section>
             <h1 className="sectionTitle">Refeições</h1>
-            <div className="carousel" >
+            <div className="carousel">
               <div className="mainPlatesCards" ref={mainPlatesCarousel}>
                 {mainPlates &&
                   mainPlates.map(plate => (
@@ -109,7 +111,7 @@ export function HomeUser() {
 
           <section>
             <h1 className="sectionTitle">Sobremesas</h1>
-            <div className="carousel" >
+            <div className="carousel">
               <div className="dessertsCards" ref={dessertsCarousel}>
                 {desserts &&
                   desserts.map(plate => (
@@ -127,12 +129,10 @@ export function HomeUser() {
 
           <section>
             <h1 className="sectionTitle">Bebidas</h1>
-            <div className="carousel" >
+            <div className="carousel">
               <div className="drinksCards" ref={drinksCarousel}>
                 {drinks &&
-                  drinks.map(plate => (
-                    <CardUser key={plate.id} data={plate} />
-                  ))}
+                  drinks.map(plate => <CardUser key={plate.id} data={plate} />)}
               </div>
               <button className="leftButton" onClick={handleDrinksLeft}>
                 <FiChevronLeft />
@@ -143,7 +143,6 @@ export function HomeUser() {
             </div>
           </section>
         </div>
-
       </main>
       <Footer />
     </Container>
