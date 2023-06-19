@@ -8,10 +8,11 @@ import { AuthRoutes } from "./auth.routes";
 
 export function Routes() {
   const { user } = useAuth()
-
   return (
     <BrowserRouter>
-      {user ? <AppAdminRoutes /> : <AuthRoutes />} 
+      {user ? (user.isAdmin ? <AppAdminRoutes /> : <AppUserRoutes />) : <AuthRoutes />} 
     </BrowserRouter>
   )
 }
+
+
